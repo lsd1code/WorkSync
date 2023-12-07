@@ -14,11 +14,11 @@ type UserRegister = {
 
 type Ctx = {
   user: User | null,
+  loading: boolean,
+  error: string,
   logout: () => void,
   login: (user: UserRegister) => Promise<void>,
   signup: (user: UserRegister) => Promise<void>,
-  loading: boolean,
-  error: string
 }
 
 export const AuthContext = createContext<Ctx>({} as Ctx)
@@ -36,17 +36,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       const { data } = await axios.post(`${baseUrl}/login`, {...user})
       
-      setUserObj(currUser => {
-        if(!currUser) currUser = { name: data.name }
-        return currUser          
-      })
+      setUserObj({ name: data.name })
 
       addLocalStorage('user', data.name)
       addLocalStorage('token', data.token)
       
       setError('')
     } catch (error) {
-      setError(error.response.data.msg)
+      setError(error.response.data.msg || 'something went wrong, please try again later')
       console.log('Error', error.response.data.msg)
     } finally {
       setIsLoading(false)
@@ -59,10 +56,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       const { data } = await axios.post(`${baseUrl}/register`, {...user})
       
-      setUserObj(currUser => {
-        if(!currUser) currUser = { name: data.name }
-        return currUser          
-      })
+      setUserObj({ name: data.name })
 
       addLocalStorage('user', data.name)
       addLocalStorage('token', data.token)
