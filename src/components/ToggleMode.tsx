@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { FaMoon, FaSun } from 'react-icons/fa6'
 
 const ToggleMode = () => {
   const [theme, setTheme] = useState<null | string>(null)
@@ -22,8 +23,8 @@ const ToggleMode = () => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   return (
-    <button className='py-1 px-6 bg-cyan-600 rounded' onClick={toggleTheme}>
-      toggle
+    <button className='py-1 px-6 rounded' onClick={toggleTheme}>
+      {theme === 'dark' ? <FaSun color='yellow' /> : <FaMoon color='#36175e' />}
     </button>
   )
 }
