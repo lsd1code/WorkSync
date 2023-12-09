@@ -23,7 +23,7 @@ const ToggleMode = () => {
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   return (
-    <button className='py-1 px-6 rounded' onClick={toggleTheme}>
+    <button className='text-2xl' onClick={toggleTheme}>
       {theme === 'dark' ? <FaSun color='yellow' /> : <FaMoon color='#36175e' />}
     </button>
   )

@@ -4,13 +4,13 @@ import Sidebar from "../../components/Dashboard/Sidebar"
 
 const Dashboard = () => {
   return (
-    <div className="dark:text-white">
+    <div className="dark:text-white min-h-screen">
       <Header/>
-      <Sidebar/>
-
-      Dashboard Page
-
-      <Outlet/>
+      
+      <div className="flex">
+        <Sidebar/>
+        <Outlet/>
+      </div>
     </div>
   )
 }

@@ -10,11 +10,10 @@ function App() {
         <Routes>
           <Route path='/' element={<LayoutHeader />}>
             <Route index element={<Home />} />
+            <Route path='login' element={<Login />} />
+            <Route path='signup' element={<Register />} />
           </Route>
 
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Register />} />
-          
           <Route path='/dashboard' element={<Dashboard />}>
             <Route index element={<Stats />} />
             <Route path='jobs' element={<Jobs />} />
