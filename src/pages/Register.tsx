@@ -1,13 +1,20 @@
 import useInput from "../hooks/useInput"
 import { useAuthCtx } from "../hooks/useAuthCtx"
 import Spinner from "../components/Spinner"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import Error from "../components/Error"
+import { useState, useEffect } from 'react'
 
 const Register = () => {
   const nameProps = useInput()
   const emailProps = useInput()
   const pwdProps = useInput()
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() =>{
+    console.log('logged in useEffect');
+  }, [loggedIn])
 
   const { signup, loading, error } = useAuthCtx()
 
@@ -22,9 +29,14 @@ const Register = () => {
 
     try {
       await signup(user)
+      setLoggedIn(true)    
     } catch (error: unknown) {
       console.log(error)
     }
+  }
+
+  if(loggedIn) {
+    return <Navigate to={'/dashboard'} replace />
   }
 
   return (

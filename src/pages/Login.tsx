@@ -1,12 +1,19 @@
 import Spinner from "../components/Spinner"
 import { useAuthCtx } from "../hooks/useAuthCtx"
 import useInput from "../hooks/useInput"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import Error from "../components/Error"
+import { useState, useEffect } from 'react'
 
 const Login = () => {
   const emailProps = useInput()
   const pwdProps = useInput()
+
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() =>{
+    console.log('logged in useEffect');
+  }, [loggedIn])
 
   const { login, loading, error } = useAuthCtx()
 
@@ -18,7 +25,12 @@ const Login = () => {
       password: pwdProps.value
     }
 
-    await login(user)      
+    await login(user)  
+    setLoggedIn(true)    
+  }
+
+  if(loggedIn) {
+    return <Navigate to={'/dashboard'} replace />
   }
 
   return (
