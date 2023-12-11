@@ -5,7 +5,7 @@ const ToggleMode = () => {
   const [theme, setTheme] = useState<null | string>(null)
 
   useEffect(() => {
-    if(window.matchMedia('prefers-color-scheme: dark')) {
+    if(window.matchMedia('prefers-color-scheme: dark').matches) {
       setTheme('dark')
     }else {
       setTheme('light')

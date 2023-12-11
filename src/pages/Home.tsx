@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import illustration from '../assets/hero-illustraion.svg'
 
-
 const Home = () => {
   return (
     <section className="grid xl:grid-cols-2 gap-16 items-center text-[#383545] h-[80dvh] px-6 md:px-[5em]">

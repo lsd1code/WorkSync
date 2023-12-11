@@ -4,14 +4,15 @@ import Sidebar from "../../components/Dashboard/Sidebar"
 
 const Dashboard = () => {
   return (
-    <div className="dark:text-white min-h-screen">
-      <Header/>
-      
-      <div className="flex">
+    <main className="dark:text-white min-h-screen pt-4">
+      <div className="flex gap-2 px-[1em]">
         <Sidebar/>
-        <Outlet/>
+        <div className="w-[100%]">
+          <Header/>
+          <Outlet/>
+        </div>
       </div>
-    </div>
+    </main>
   )
 }
 
