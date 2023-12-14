@@ -74,7 +74,13 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const logout = () => console.log('logout user');
+  const logout = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    setUserObj(null)
+
+    console.log('hello world');    
+  };
 
   const ctxObj = {
     user: userObj,

@@ -1,9 +1,9 @@
-import useInput from "../hooks/useInput"
+import { useState, useEffect } from 'react'
+import { Link, Navigate } from "react-router-dom"
 import { useAuthCtx } from "../hooks/useAuthCtx"
 import Spinner from "../components/Spinner"
-import { Link, Navigate } from "react-router-dom"
+import useInput from "../hooks/useInput"
 import Error from "../components/Error"
-import { useState, useEffect } from 'react'
 
 const Register = () => {
   const nameProps = useInput()
